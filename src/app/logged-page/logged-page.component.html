@@ -1,0 +1,37 @@
+<div>
+  <div class="flex bg-gray-200">
+    <app-sidebar
+      class="basis-1/12 h-full"
+      [isOpen]="sidebarOpen"
+      (menuItemClick)="handleMenuClick($event)"
+    >
+    </app-sidebar>
+
+    <app-header
+      class="basis-11/12 h-10"
+      (toggleSidebar)="toggleSidebar()"
+      (logout)="handleLogout()"
+    >
+    </app-header>
+  </div>
+</div>
+<div>
+  <div class="flex-1 flex flex-col bg-gray-100">
+    <!-- Conteúdo baseado na seção ativa -->
+    <div [ngSwitch]="activeSection" class="flex-1">
+      <!-- Planos de Leitura (padrão) -->
+      <div *ngSwitchCase="'planos-leitura'" class="flex flex-col h-full">
+        <app-toolbar> </app-toolbar>
+
+        <app-filter> </app-filter>
+
+        <div class="flex-1 overflow-auto">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <app-footer class="w-full"></app-footer>
+</div>
