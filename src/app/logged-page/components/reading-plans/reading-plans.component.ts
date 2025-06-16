@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 export interface Plan {
   id: number;
@@ -13,7 +14,7 @@ export interface Plan {
 @Component({
   selector: 'app-reading-plans',
   standalone: true,
-  imports:[CommonModule],
+  imports:[CommonModule, FooterComponent],
   templateUrl: './reading-plans.component.html',
   styleUrls: ['./reading-plans.component.css'],
 })

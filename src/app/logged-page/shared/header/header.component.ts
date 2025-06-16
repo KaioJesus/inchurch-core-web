@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { LoginService } from '../../../core/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,8 @@ import { LoginService } from '../../../core/services/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  private router = inject(Router);
   userName = '';
-  @Output() toggleSidebar = new EventEmitter<void>();
-  @Output() logout = new EventEmitter<void>();
-
   showUserMenu = false;
 
   constructor(private loginService: LoginService){
@@ -21,9 +20,12 @@ export class HeaderComponent {
     this.userName = user.name;
   }
 
-  handleLogout() {
-    this.showUserMenu = false;
-    this.logout.emit();
+   logout() {
+    try {
+      localStorage.clear();
+      this.router.navigate(['login']);
+    } catch (error: any) {
+      console.error('Unexpected error during login:', error);
+    }
   }
-
 }

@@ -35,6 +35,7 @@ export class LoginComponent {
         this._router.navigate(['home'])
       },
       error:(err)=>{
+        console.log(err);
         if(err.status === 401){
           this.loginForm.setErrors({'invalidCredentials': true});
         } else

@@ -1,37 +1,62 @@
-<div>
-  <div class="flex bg-gray-200">
-    <app-sidebar
-      class="basis-1/12 h-full"
-      [isOpen]="sidebarOpen"
-      (menuItemClick)="handleMenuClick($event)"
-    >
-    </app-sidebar>
-
-    <app-header
-      class="basis-11/12 h-10"
-      (toggleSidebar)="toggleSidebar()"
-      (logout)="handleLogout()"
-    >
-    </app-header>
-  </div>
-</div>
-<div>
-  <div class="flex-1 flex flex-col bg-gray-100">
-    <!-- Conteúdo baseado na seção ativa -->
-    <div [ngSwitch]="activeSection" class="flex-1">
-      <!-- Planos de Leitura (padrão) -->
-      <div *ngSwitchCase="'planos-leitura'" class="flex flex-col h-full">
-        <app-toolbar> </app-toolbar>
-
-        <app-filter> </app-filter>
-
-        <div class="flex-1 overflow-auto">
-          <router-outlet></router-outlet>
+<div class="flex bg-gray-100">
+  <!-- menu lateral -->
+  <div
+    style="padding: 2rem"
+    class="w-[100px] flex flex-col justify-between shrink-0 top-0 left-0 z-10 min-h-screen bg-gray-100"
+  >
+    <nav>
+      <div
+        class="flex flex-col items-center justify-center gap-2"
+        style="margin-bottom: 1.5rem"
+      >
+        <div (click)="toggleSidebar()" class="cursor-pointer">
+          <img
+            class="h-6 w-6 cursor-pointer"
+            src="icons/hamburguer.svg"
+            alt=""
+          />
         </div>
       </div>
+
+      <div
+        *ngFor="let item of menuItems"
+        style="padding: 0.5rem 0"
+        routerLinkActive="bg-green-100 text-green-700"
+        class="flex flex-col items-center justify-center rounded-md cursor-pointer transition-colors py-2 gap-4"
+      >
+        <button
+          class="hover:bg-gray-200 mt-4 w-full flex flex-col items-center cursor-pointer rounded p-3"
+          [routerLink]="item.url"
+        >
+          <img class="mr-2 h-6 w-8" [src]="item.icon" alt="" />
+          <span class="text-black">{{ item.label }}</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- menu lateral inferior -->
+    <nav>
+      <div
+        class="flex flex-col items-center justify-center rounded-md cursor-pointer transition-colors py-2"
+        *ngFor="let item of menuItemsTwo"
+      >
+        <button
+          class="hover:bg-gray-200 ease-in mt-4 w-full flex flex-col items-center cursor-pointer rounded p-3"
+          [routerLink]="item.url"
+          routerLinkActive="bg-green-100 text-green-700"
+        >
+          <img class="mr-2 h-6 w-6" [src]="item.icon" alt="" />
+          <span class="text-black">{{ item.label }}</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- conteúdo -->
+  <div class="flex-1 ml-[100px] min-h-screen">
+    <app-header [title]="selectedTitle"></app-header>
+    <div class="p-4">
+      <router-outlet></router-outlet>
     </div>
   </div>
-</div>
-<div>
-  <app-footer class="w-full"></app-footer>
 </div>
