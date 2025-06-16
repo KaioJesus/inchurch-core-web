@@ -20,12 +20,12 @@ npm install -g @angular/cli
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/KaioJesus/inchurch-core-web.git
    ```
 
 2. **Entre no diretório do projeto**
    ```bash
-   cd nome-do-repositorio
+   cd inchurch-core-web
    ```
 
 3. **Instale as dependências**
