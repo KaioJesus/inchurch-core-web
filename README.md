@@ -27,17 +27,17 @@ npm install -g @angular/cli
    npm install
    ```
 4. **Execute a aplicação em modo de desenvolvimento**
-
-```bash
-ng serve ou npm start
-```
+  
+  ```bash
+  ng serve ou npm start
+  ```
 
 ## 🛠️ Tecnologias utilizadas
 
 - [Angular](https://angular.io/) - Framework web
 - [TypeScript](https://www.typescriptlang.org/) - Linguagem de programação
 - [RxJS](https://rxjs.dev/) - Biblioteca para programação reativa
-- [Tailwindcss][(https://getbootstrap.com/](https://tailwindcss.com/)) 
+- [Tailwindcss](https://tailwindcss.com/)
 
 # Nome do Projeto Angular
 
