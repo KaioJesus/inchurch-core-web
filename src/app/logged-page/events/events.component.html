@@ -1,0 +1,149 @@
+<div
+  style="margin: 1rem; padding: 2rem; height: 55vh"
+  class="p-6 mx-auto my-8 bg-white border rounded-lg shadow-lg font-sans border-slate-200"
+>
+  <div *ngIf="!isCardView; else cardViewBlock">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr>
+          <th
+            style="padding: 1rem"
+            class="text-xs font-semibold uppercase border-b text-slate-500 border-slate-200 tracking-wider"
+          >
+            Eventos
+          </th>
+          <th
+            style="padding: 1rem"
+            class="text-xs font-semibold uppercase border-b text-slate-500 border-slate-200 tracking-wider"
+          >
+            Publicado em
+          </th>
+          <th
+            style="padding: 1rem"
+            class="text-xs font-semibold uppercase border-b text-slate-500 border-slate-200 tracking-wider"
+          >
+            ações
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of allEvents" class="group">
+          <td
+            (click)="handleEditPlan(event.id)"
+            style="padding: 1rem"
+            class="font-medium border-b border-slate-200 text-slate-800 group-hover:bg-slate-50 cursor-pointer"
+          >
+            {{ event.title }}
+          </td>
+          <td
+            style="padding: 1rem"
+            class="border-b border-slate-200 text-slate-600 group-hover:bg-slate-50"
+          >
+            {{ event.date }}
+          </td>
+          <td
+            style="padding: 1rem"
+            class="p-4 border-b border-slate-200 text-slate-600 group-hover:bg-slate-50"
+          >
+            <div class="flex gap-4 text-lg text-center">
+              <span
+                (click)="handleEditPlan(event.id)"
+                title="Editar"
+                class="transition-colors cursor-pointer text-slate-400 hover:text-slate-700"
+                >✏️</span
+              >
+              <span
+                (click)="handleDeletePlan(event)"
+                title="Excluir"
+                class="transition-colors cursor-pointer text-slate-400 hover:text-red-600"
+                >🗑️</span
+              >
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #cardViewBlock>
+    <div
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      <div
+        *ngFor="let event of allEvents"
+        class="flex flex-col justify-between p-4 transition-all duration-200 border rounded-lg bg-white border-slate-200 hover:-translate-y-1 hover:shadow-lg"
+      >
+        <img class="h-fit" [src]="event.image" alt="" />
+        <div style="padding: 1rem" class="flex flex-col gap-3 pb-3 mb-3">
+          <h3 class="text-base font-semibold text-slate-800">
+            {{ event.title }}
+          </h3>
+          <p class="text-lime-600 font-bold">Publicado em</p>
+          <div class="flex justify-between">
+            <div>
+              <p>{{ event.date }}</p>
+            </div>
+            <div class="flex gap-4">
+              <span
+                (click)="handleEditPlan(event.id)"
+                title="Editar"
+                class="transition-colors cursor-pointer text-slate-400 hover:text-slate-700"
+                >✏️</span
+              >
+              <span
+                (click)="handleDeletePlan(event)"
+                title="Excluir"
+                class="transition-colors cursor-pointer text-slate-400 hover:text-red-600"
+                >🗑️</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<div style="margin: 0 1rem" class="flex items-center justify-between">
+  <div></div>
+  <div class="flex items-center gap-2 text-sm text-slate-500">
+    <span
+      class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >&#x25C0;</span
+    >
+    <span
+      class="px-3 py-1.5 font-bold text-green-800 bg-green-100 rounded-md cursor-pointer"
+      >1</span
+    >
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >2</span
+    >
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >3</span
+    >
+    <span>...</span>
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >50</span
+    >
+    <span
+      class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >&#x25B6;</span
+    >
+  </div>
+  <div class="view-toggle">
+    <button
+      (click)="toggleView()"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors rounded-md text-slate-700 cursor-pointer"
+    >
+      <span class="hover:bg-gray-200 delay-100 ease-in" *ngIf="!isCardView"
+        >Ver tabela em cards</span
+      >
+      <span class="hover:bg-gray-200 delay-100 ease-in" *ngIf="isCardView"
+        >Ver cards em tabela</span
+      >
+    </button>
+  </div>
+</div>
+<app-footer></app-footer>

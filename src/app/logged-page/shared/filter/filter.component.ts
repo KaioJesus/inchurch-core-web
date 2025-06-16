@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
+  @Input() title: string = ''
+  @Input() icon: string = ''
 
   constructor() { }
 
@@ -17,8 +19,8 @@ export class FilterComponent implements OnInit {
   //     this.filteredPlans = [...this.allPlans];
   //     return;
   //   }
-    
-  //   this.filteredPlans = this.allPlans.filter(plan => 
+
+  //   this.filteredPlans = this.allPlans.filter(plan =>
   //     plan.title.toLowerCase().includes(searchTerm.toLowerCase())
   //   );
   // }

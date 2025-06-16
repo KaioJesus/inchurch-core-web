@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from '../../shared/footer/footer.component';
+import { FooterComponent } from '../shared/footer/footer.component';
 
 export interface Plan {
   id: number;

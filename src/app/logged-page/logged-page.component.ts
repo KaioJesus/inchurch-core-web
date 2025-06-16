@@ -2,16 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from './shared/header/header.component';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { FilterComponent } from "./shared/filter/filter.component";
 
 
 @Component({
   selector: 'app-logged-page',
   standalone: true,
-  imports:[CommonModule,
+  imports: [CommonModule,
     RouterOutlet,
     HeaderComponent,
-    RouterModule
-  ],
+    RouterModule, FilterComponent],
   templateUrl: './logged-page.component.html',
   styleUrls: ['./logged-page.component.css']
 })
@@ -21,9 +21,10 @@ export class LoggedPageComponent implements OnInit{
   isOpen: boolean = false;
   isCollapsed = true
   selectedTitle = 'Planos de leitura'
+  selectedIcon = 'Início'
 
   menuItems = [
-    { icon: 'icons/inicio.svg', label: 'Início', url: '' },
+    { icon: 'icons/inicio.svg', label: 'Início', url: 'home' },
     { icon: 'icons/pessoas.svg', label: 'Pessoas', url: 'pessoas' },
     { icon: 'icons/celulas.svg', label: 'Células', url: 'celulas' },
     { icon: 'icons/oracoes.svg', label: 'Orações', url: 'oracoes' },
@@ -45,13 +46,16 @@ export class LoggedPageComponent implements OnInit{
     { label: 'Banner', url: '' },
     { label: 'Push', url: '' },
     { label: 'Paginas multiuso', url: '' },
-    { label: 'Plano de leitura', url: 'planos-de-leitura' },
+    { icon: 'icons/book.svg', label: 'Plano de leitura', url: 'planos-de-leitura' },
     { label: 'Sugestão de conteúdos', url: '' },
     { label: 'Configurações', url: '' },
   ];
 
   ngOnInit(): void {
-      console.log(this.menuItems)
+    this.setTitleBar();
+    this.router.events.subscribe(() => {
+        this.setTitleBar();
+    });
   }
 
   sidebarOpen = true;
@@ -87,13 +91,13 @@ export class LoggedPageComponent implements OnInit{
   }
 
    setTitleBar(): void {
-    const url = this.router.url;
+    const currentRoute = this.router.url.split('/').pop() || '';
 
-    if (url.endsWith('/eventos')) {
-      this.selectedTitle = 'Eventos';
-    } else if (url.endsWith('/planos-de-leitura')) {
-      this.selectedTitle = 'Planos de leitura';
+    const mainMenuItem = this.menuItems.find(item => item.url === currentRoute);
+    if (mainMenuItem) {
+      this.selectedTitle = mainMenuItem.label;
+      this.selectedIcon = mainMenuItem.icon;
+      return;
     }
   }
-
 }

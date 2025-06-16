@@ -1,7 +1,7 @@
 <div class="flex bg-gray-100">
   <!-- menu lateral -->
   <div
-    style="padding: 2rem"
+    style="padding: 1rem"
     class="w-[100px] flex flex-col justify-between shrink-0 top-0 left-0 z-10 min-h-screen bg-gray-100"
   >
     <nav>
@@ -21,11 +21,11 @@
       <div
         *ngFor="let item of menuItems"
         style="padding: 0.5rem 0"
-        routerLinkActive="bg-green-100 text-green-700"
-        class="flex flex-col items-center justify-center rounded-md cursor-pointer transition-colors py-2 gap-4"
+        routerLinkActive="bg-green-100 text-green-600  "
+        class="flex flex-col items-center justify-center rounded-2xl cursor-pointer transition-colors py-2 gap-4 hover:bg-green-100"
       >
         <button
-          class="hover:bg-gray-200 mt-4 w-full flex flex-col items-center cursor-pointer rounded p-3"
+          class="mt-4 w-full flex flex-col items-center cursor-pointer rounded p-3"
           [routerLink]="item.url"
         >
           <img class="mr-2 h-6 w-8" [src]="item.icon" alt="" />
@@ -53,8 +53,9 @@
   </div>
 
   <!-- conteúdo -->
-  <div class="flex-1 ml-[100px] min-h-screen">
-    <app-header [title]="selectedTitle"></app-header>
+  <div class="flex-1 ml-[100px]">
+    <app-header></app-header>
+    <app-filter [title]="selectedTitle" [icon]="selectedIcon"></app-filter>
     <div class="p-4">
       <router-outlet></router-outlet>
     </div>
