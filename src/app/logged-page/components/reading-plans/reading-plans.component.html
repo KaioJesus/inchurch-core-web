@@ -93,22 +93,27 @@
       class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
       <div
+        style="padding: 1rem"
         *ngFor="let plan of allPlans"
         class="flex flex-col justify-between p-4 transition-all duration-200 border rounded-lg bg-slate-50 border-slate-200 hover:-translate-y-1 hover:shadow-lg"
       >
         <div>
           <div
+            style="padding: 1rem 0"
             class="flex items-center gap-3 pb-3 mb-3 border-b border-slate-200"
           >
             <h3 class="text-base font-semibold text-slate-800">
               {{ plan.title }}
             </h3>
           </div>
-          <div class="flex-grow text-sm text-slate-600">
+          <div
+            style="padding: 0.5rem 0"
+            class="flex-grow text-sm text-slate-600"
+          >
             <p class="mb-2">
               <strong>Conteúdo:</strong> {{ plan.readings }} leituras
             </p>
-            <p class="mb-2">
+            <p style="padding: 0.5rem 0" class="mb-2">
               <strong>Publicado para:</strong> {{ plan.publishedTo }}
             </p>
             <p>
@@ -118,8 +123,9 @@
         </div>
         <div class="flex gap-2 mt-4">
           <button
+            style="padding: 0.5rem"
             (click)="handleEditPlan(plan.id)"
-            class="flex-1 px-3 py-2 text-sm font-medium transition-colors bg-white border rounded-md border-slate-300 hover:bg-slate-100 cursor-pointer"
+            class="flex-1 text-sm font-medium transition-colors bg-white border rounded-md border-slate-300 hover:bg-slate-100 cursor-pointer"
           >
             Editar ✏️
           </button>
@@ -133,46 +139,48 @@
       </div>
     </div>
   </ng-template>
-
-  <div
-    class="flex items-center justify-between pt-6 mt-4 border-t border-slate-200"
-  >
-    <div class="flex items-center gap-2 text-sm text-slate-500">
-      <span
-        class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
-        >&#x25C0;</span
+</div>
+<div style="margin: 0 1rem" class="flex items-center justify-between">
+  <div></div>
+  <div class="flex items-center gap-2 text-sm text-slate-500">
+    <span
+      class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >&#x25C0;</span
+    >
+    <span
+      class="px-3 py-1.5 font-bold text-green-800 bg-green-100 rounded-md cursor-pointer"
+      >1</span
+    >
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >2</span
+    >
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >3</span
+    >
+    <span>...</span>
+    <span
+      class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >50</span
+    >
+    <span
+      class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
+      >&#x25B6;</span
+    >
+  </div>
+  <div class="view-toggle">
+    <button
+      (click)="toggleView()"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors rounded-md text-slate-700 cursor-pointer"
+    >
+      <span class="hover:bg-gray-200 delay-100 ease-in" *ngIf="!isCardView"
+        >Ver tabela em cards</span
       >
-      <span
-        class="px-3 py-1.5 font-bold text-green-800 bg-green-100 rounded-md cursor-pointer"
-        >1</span
+      <span class="hover:bg-gray-200 delay-100 ease-in" *ngIf="isCardView"
+        >Ver cards em tabela</span
       >
-      <span
-        class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
-        >2</span
-      >
-      <span
-        class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
-        >3</span
-      >
-      <span>...</span>
-      <span
-        class="px-3 py-1.5 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
-        >50</span
-      >
-      <span
-        class="p-2 transition-colors rounded-md cursor-pointer hover:bg-slate-100"
-        >&#x25B6;</span
-      >
-    </div>
-    <div class="view-toggle">
-      <button
-        (click)="toggleView()"
-        class="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors bg-white rounded-md text-slate-700 border-slate-300 hover:bg-slate-100 cursor-pointer"
-      >
-        <span *ngIf="!isCardView">⊞ Ver tabela em lista</span>
-        <span *ngIf="isCardView">📄 Ver lista em tabela</span>
-      </button>
-    </div>
+    </button>
   </div>
 </div>
 <app-footer></app-footer>
