@@ -35,7 +35,7 @@ npm install -g @angular/cli
 
 4. **Execute a aplicação em modo de desenvolvimento**
    ```bash
-   npm run start:dev
+   npm start ou ng serve
    ```
 
 5. **Acesse a aplicação**
