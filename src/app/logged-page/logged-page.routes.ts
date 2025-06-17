@@ -62,6 +62,11 @@ export const loggedPageRoutes: Routes = [
           path: 'planos-de-leitura',
           component: ReadingPlansComponent
         },
+        {
+          path: 'planos-de-leitura/details/:id',
+          loadComponent: ()=> import('./reading-plans/details-reading-plans/details-reading-plans.component').then(m => m.DetailsReadingPlansComponent),
+          title: 'Detalhes do plano de leitura'
+        },
       ]
     },
   {

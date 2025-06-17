@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FooterComponent } from '../shared/footer/footer.component';
+import { Router } from '@angular/router';
 
 export interface Plan {
   id: number;
@@ -19,6 +20,7 @@ export interface Plan {
   styleUrls: ['./reading-plans.component.css'],
 })
 export class ReadingPlansComponent implements OnInit {
+  private router = inject(Router);
   isCardView = false;
 
   // Dados mockados
@@ -55,22 +57,6 @@ export class ReadingPlansComponent implements OnInit {
       totalReaders: 345,
       image: '⚖️',
     },
-    {
-      id: 5,
-      title: 'Genesis, tudo que você não sabia!',
-      readings: 3,
-      publishedTo: 'Igreja local: Yeshua',
-      totalReaders: null, // Representando o "-" como nulo
-      image: '📜',
-    },
-    {
-      id: 6,
-      title: 'Jesus é lindo e perfeito no nosso dia a dia',
-      readings: 365,
-      publishedTo: 'Denominação',
-      totalReaders: 78,
-      image: '✨',
-    },
   ];
 
   filteredPlans = [...this.allPlans];
@@ -83,8 +69,11 @@ export class ReadingPlansComponent implements OnInit {
     this.isCardView = !this.isCardView;
   }
 
-  handleEditPlan(planId: number) {
-    console.log('Editar plano:', planId);
+   handleEditPlan(id: number) {
+      this.router.navigate([
+        'home/planos-de-leitura/details/',
+        id,
+    ]);
   }
 
   handleDeletePlan(plan: Plan) {

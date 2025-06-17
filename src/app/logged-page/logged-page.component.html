@@ -11,7 +11,7 @@
       >
         <div (click)="toggleSidebar()" class="cursor-pointer">
           <img
-            class="h-6 w-6 cursor-pointer"
+            class="h-6 w-6 cursor-pointer focus:bg-lime-800"
             src="icons/hamburguer.svg"
             alt=""
           />
@@ -55,9 +55,35 @@
   <!-- conteúdo -->
   <div class="flex-1 ml-[100px]">
     <app-header></app-header>
-    <app-filter [title]="selectedTitle" [icon]="selectedIcon"></app-filter>
-    <div class="p-4">
-      <router-outlet></router-outlet>
+    <div class="flex">
+      <div
+        style="margin: 0 1rem"
+        *ngIf="sidebarOpen"
+        class="shrink-0 bg-white h-fit"
+      >
+        <div
+          style="padding: 0.25rem 0.5rem"
+          *ngFor="let item of subMenuItems"
+          class="flex items-center justify-center rounded-2xl cursor-pointer transition-colors py-2 gap-4 shrink-0 hover:bg-green-100"
+        >
+          <button
+            style="padding: 0.5rem"
+            class="mt-4 w-full flex gap-2 justify-centeritems-center cursor-pointer rounded p-3"
+            [routerLink]="item.url"
+          >
+            <img class="mr-2 h-6 w-8" [src]="item.icon" alt="" />
+            <span class="text-gray-400 font-semibold">{{ item.label }}</span>
+          </button>
+        </div>
+      </div>
+      <div class="p-4 flex-1">
+        <app-filter
+          class="flex-1"
+          [title]="selectedTitle"
+          [icon]="selectedIcon"
+        ></app-filter>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

@@ -22,6 +22,11 @@ export class LoggedPageComponent implements OnInit{
   isCollapsed = true
   selectedTitle = 'Planos de leitura'
   selectedIcon = 'Início'
+  sidebarOpen = false;
+  activeFilters: string[] = [
+    'Mulheres que não concluíram o plano',
+    'Homens que não concluíram o plano'
+  ];
 
   menuItems = [
     { icon: 'icons/inicio.svg', label: 'Início', url: 'home' },
@@ -39,16 +44,17 @@ export class LoggedPageComponent implements OnInit{
   ];
 
   subMenuItems = [
-    { label: 'Tela inicial', url: '' },
-    { label: 'Palavras', url: '' },
-    { label: 'Notícias', url: '' },
-    { label: 'Downloads', url: '' },
-    { label: 'Banner', url: '' },
-    { label: 'Push', url: '' },
-    { label: 'Paginas multiuso', url: '' },
+    { icon: 'icons/home.svg', label: 'Tela inicial', url: 'home' },
+    { icon: 'icons/opened-book.svg', label: 'Palavras', url: 'home' },
+    { icon: 'icons/pencil.svg', label: 'Notícias', url: 'home' },
+    { icon: 'icons/download.svg', label: 'Downloads', url: 'home' },
+    { icon: 'icons/download.svg', label: 'Banner', url: 'home' },
+    { icon: 'icons/download.svg', label: 'Push', url: 'home' },
+    { icon: 'icons/download.svg', label: 'Paginas multiuso', url: 'home' },
     { icon: 'icons/book.svg', label: 'Plano de leitura', url: 'planos-de-leitura' },
-    { label: 'Sugestão de conteúdos', url: '' },
-    { label: 'Configurações', url: '' },
+    { icon: 'icons/videos.svg', label: 'Vídeos', url: 'home' },
+    { icon: 'icons/download.svg', label: 'Sugestão de conteúdos', url: 'home' },
+    { icon: 'icons/settings.svg', label: 'Configurações', url: 'home' },
   ];
 
   ngOnInit(): void {
@@ -58,39 +64,12 @@ export class LoggedPageComponent implements OnInit{
     });
   }
 
-  sidebarOpen = true;
-  activeSection = 'planos-leitura'; // Seção ativa por padrão
-  activeFilters: string[] = [
-    'Mulheres que não concluíram o plano',
-    'Homens que não concluíram o plano'
-  ];
-
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
+    console.log(this.sidebarOpen)
   }
 
-  handleMenuClick(menuItem: string) {
-    this.activeSection = menuItem;
-    console.log('Seção ativa:', menuItem);
-  }
-
-  handleLogout() {
-    localStorage.removeItem('token');
-    // Redirecionar para login ou usar Router
-    window.location.href = '/';
-  }
-
-
-  removeFilter(filter: string) {
-    this.activeFilters = this.activeFilters.filter(f => f !== filter);
-  }
-
-  handleNewPlan() {
-    console.log('Criar novo plano');
-    // Navegar para formulário ou abrir modal
-  }
-
-   setTitleBar(): void {
+  setTitleBar(): void {
     const currentRoute = this.router.url.split('/').pop() || '';
 
     const mainMenuItem = this.menuItems.find(item => item.url === currentRoute);

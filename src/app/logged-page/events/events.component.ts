@@ -65,7 +65,6 @@ export class EventsComponent implements OnInit {
         'home/eventos/details/',
         id,
     ]);
-    console.log()
     }
 
     handleDeletePlan(event: Events) {
