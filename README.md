@@ -41,6 +41,35 @@ npm install -g @angular/cli
 5. **Acesse a aplicação**
    A aplicação estará rodando em: `http://localhost:4200`
 
+## Fazendo o login na aplicação
+
+![image](https://github.com/user-attachments/assets/c6f8aba8-b5a3-46c5-a3bd-89671fbf76fb)
+Utilize um dos dados mockados listados:
+
+```
+   const USERS_LIST = [
+    {
+        name: 'Kaio Jesus',
+        email: 'kaiojesus@gmail.com',
+        username: 'kaio',
+        password: '123456789',
+    },
+    {
+        name: 'Kevin Jesus',
+        email: 'kevinjesus@gmail.com',
+        username: 'kevin',
+        password: '123456789',
+    },
+    {
+        name: 'Kauã Jesus',
+        email: 'kauajesus@gmail.com',
+        username: 'Kaua',
+        password: '123456789',
+    },
+]
+```
+
+
 ## 📝 Scripts disponíveis
 
 - `npm start` - Executa a aplicação em modo de desenvolvimento
