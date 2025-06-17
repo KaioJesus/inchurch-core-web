@@ -59,6 +59,12 @@ export class ReadingPlansComponent implements OnInit {
     },
   ];
 
+  filters: string[] = [
+    'Mulheres que não concluíram o plano',
+    'Homens que não concluíram o plano',
+    'Abaixo dos 15 anos'
+  ];
+
   filteredPlans = [...this.allPlans];
 
   constructor() {}

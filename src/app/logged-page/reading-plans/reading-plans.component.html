@@ -1,5 +1,14 @@
+<div style="padding: 1rem" class="flex gap-4">
+  <button
+    style="padding: 0.25rem 0.5rem"
+    *ngFor="let filter of filters"
+    class="border rounded-full hover:bg-gray-200 delay-100 transition ease-in cursor-pointer"
+  >
+    {{ filter }}
+  </button>
+</div>
 <div
-  style="margin: 1rem; padding: 2rem; min-height: 55vh"
+  style="margin: 0 1rem; padding: 2rem; min-height: 50vh"
   class="p-6 mx-auto my-8 bg-white border rounded-lg shadow-lg font-sans border-slate-200"
 >
   <div *ngIf="!isCardView; else cardViewBlock">
@@ -95,7 +104,7 @@
       <div
         style="padding: 1rem"
         *ngFor="let plan of allPlans"
-        class="flex flex-col justify-between p-4 transition-all duration-200 border rounded-lg bg-slate-50 border-slate-200 hover:-translate-y-1 hover:shadow-lg"
+        class="flex flex-col justify-between p-4 transition-all duration-200 border rounded-lg border-slate-200 hover:-translate-y-1 hover:shadow-lg"
       >
         <div>
           <div
