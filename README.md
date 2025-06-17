@@ -69,6 +69,21 @@ Utilize um dos dados mockados listados:
 ]
 ```
 
+## Páginas
+
+As páginas em `Eventos` e `Planos de leitura` foram construídas, com visualização em cards e em tabela.
+
+![image](https://github.com/user-attachments/assets/1aa2a9ac-08a7-4c32-97c4-b3549822439a)
+
+![image](https://github.com/user-attachments/assets/bf675120-82ee-4fc2-8dfa-98ec37596755)
+
+![image](https://github.com/user-attachments/assets/6f7c76a2-5734-457f-a254-b777ca5a0fbe)
+
+![image](https://github.com/user-attachments/assets/08e832ae-b7b0-498b-97d9-9189ed70f94d)
+
+![image](https://github.com/user-attachments/assets/7713b9d9-3197-4fad-84df-fff4be33f997)
+
+
 
 ## 📝 Scripts disponíveis
 
